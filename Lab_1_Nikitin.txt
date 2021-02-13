@@ -46,18 +46,172 @@
 			 * [new branch]      master -> master
 
 
-
 2) Зробити ще два коміти вносячи зміни у файли 
+	$ git add .
+
+	$ git commit -m "Fix typo"
+		[master 3f8d96c] Fix typo
+		 2 files changed, 44 insertions(+), 1 deletion(-)
+
+	$ git push origin master
+		git: 'credential-cache' is not a git command. See 'git --help'.
+		Enumerating objects: 7, done.
+		Counting objects: 100% (7/7), done.
+		Delta compression using up to 12 threads
+		Compressing objects: 100% (4/4), done.
+		Writing objects: 100% (4/4), 1.08 KiB | 1.08 MiB/s, done.
+		Total 4 (delta 2), reused 0 (delta 0)
+		remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+		To https://github.com/UjinNikitin/MSVC_Lab_1.git
+		   481a754..3f8d96c  master -> master
+
+	$ git add .
+
+	$ git commit -m "Remove RSA K"
+		[master 41cc22f] Remove RSA K
+		 1 file changed, 1 insertion(+), 5 deletions(-)
+
+	$ git push origin master
+		git: 'credential-cache' is not a git command. See 'git --help'.
+		Enumerating objects: 5, done.
+		Counting objects: 100% (5/5), done.
+		Delta compression using up to 12 threads
+		Compressing objects: 100% (3/3), done.
+		Writing objects: 100% (3/3), 326 bytes | 326.00 KiB/s, done.
+		Total 3 (delta 1), reused 0 (delta 0)
+		remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+		To https://github.com/UjinNikitin/MSVC_Lab_1.git
+		   3f8d96c..41cc22f  master -> master
+
 
 3) Вивести лог змін (має бути 3 послідовних коміта)
+	$ git log --pretty=format:'%h : %s' --graph
+		* 41cc22f : Remove RSA K
+		* 3f8d96c : Fix typo
+		* 481a754 : Initial commit Lab_1
+
 
 4) На основі другого коміту зробити гілку, перейти в цю гілку та в ній внести зміни та зробити новий коміт
+	$ git branch b_2 3f8d96c
+
+	$ git checkout b_2
+		Switched to branch 'b_2'
+
+	$ git add .
+
+	$ git commit -m "b_2 commit"
+		[b_2 ccf2576] b_2 commit
+		 1 file changed, 43 insertions(+), 1 deletion(-)
+
+	$ git push origin b_2
+		git: 'credential-cache' is not a git command. See 'git --help'.
+		Enumerating objects: 5, done.
+		Counting objects: 100% (5/5), done.
+		Delta compression using up to 12 threads
+		Compressing objects: 100% (3/3), done.
+		Writing objects: 100% (3/3), 803 bytes | 803.00 KiB/s, done.
+		Total 3 (delta 2), reused 0 (delta 0)
+		remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+		remote:
+		remote: Create a pull request for 'b_2' on GitHub by visiting:
+		remote:      https://github.com/UjinNikitin/MSVC_Lab_1/pull/new/b_2
+		remote:
+		To https://github.com/UjinNikitin/MSVC_Lab_1.git
+		 * [new branch]      b_2 -> b_2
+
 
 5) Вивести дерево комітів у командному рядку. Він має бути приблизно наступний
+	$ git log --oneline --graph --decorate --all
+		* ccf2576 (origin/b_2, b_2) b_2 commit
+		| * 41cc22f (HEAD -> master, origin/master) Remove RSA K
+		|/
+		* 3f8d96c Fix typo
+		* 481a754 Initial commit Lab_1
 
-6) Покажіть різницю між  branch та main
+6) Покажіть різницю між branch та main
+	$ git diff master..b_2
+		diff --git a/File with text.txt b/File with text.txt
+		index c4a7f8a..642e828 100644
+		--- a/File with text.txt
+		+++ b/File with text.txt
+		@@ -16,4 +16,8 @@ n_A_hex = 166E35EBA15B30AC50048D7C636C10390A4593735EF439396C7E6FE4CEB9BF9F7F586A
+
+		 d_A_hex = 0F35C2740AAB71E02B20A198D8CE91996A147CFDAF058BF06F7D3A295D8AB76BDF23FF5375CAF8E9450EFFD3A613231704C229767A5AF4D5AF931FE06C8BA93861D643
+
+		-K_hex = 0B022CB706390BED
+		\ No newline at end of file
+		+K_hex = 0B022CB706390BED
+		+
+		+K = 793245648965667821
+		+
+		+n_B_hex = 08E6D7BCA0358EFE3A7EAB6F3BC06FF4F4D375023A5EF081907ACF60E5256F63101D6D5024A8571027F20284916E13FF3DB58C3288B28F0358E8A584E869461D70DA513F92A5E725A7BD839EC81A098A9B9347D262685F4010CE2A82D79E06036EF9A1925559CBFC44505F20382693D03C82189D34BD0B22AB4CC8A9C34E2D885
+		\ No newline at end of file
+		diff --git a/Lab_1_Nikitin.txt b/Lab_1_Nikitin.txt
+		index e9eb53b..27204cf 100644
+		--- a/Lab_1_Nikitin.txt
+		+++ b/Lab_1_Nikitin.txt
+		@@ -46,12 +46,54 @@
+		                         * [new branch]      master -> master
+
+
+		-
+		 2) Зробити ще два коміти вносячи зміни у файли
+		+       $ git add .
+		+
+		+       $ git commit -m "Fix typo"
+		+               [master 3f8d96c] Fix typo
+		+                2 files changed, 44 insertions(+), 1 deletion(-)
+		+
+		+       $ git push origin master
+		+               git: 'credential-cache' is not a git command. See 'git --help'.
+		+               Enumerating objects: 7, done.
+		+               Counting objects: 100% (7/7), done.
+		+               Delta compression using up to 12 threads
+		+               Compressing objects: 100% (4/4), done.
+		+               Writing objects: 100% (4/4), 1.08 KiB | 1.08 MiB/s, done.
+		+               Total 4 (delta 2), reused 0 (delta 0)
+		+               remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+		+               To https://github.com/UjinNikitin/MSVC_Lab_1.git
+		+                  481a754..3f8d96c  master -> master
+		+
+		+       $ git add .
+		+
+		+       $ git commit -m "Remove RSA K"
+		+               [master 41cc22f] Remove RSA K
+		+                1 file changed, 1 insertion(+), 5 deletions(-)
+		+
+		+       $ git push origin master
+		+               git: 'credential-cache' is not a git command. See 'git --help'.
+		+               Enumerating objects: 5, done.
+		+               Counting objects: 100% (5/5), done.
+		+               Delta compression using up to 12 threads
+		+               Compressing objects: 100% (3/3), done.
+		+               Writing objects: 100% (3/3), 326 bytes | 326.00 KiB/s, done.
+		+               Total 3 (delta 1), reused 0 (delta 0)
+		+               remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+		+               To https://github.com/UjinNikitin/MSVC_Lab_1.git
+		+                  3f8d96c..41cc22f  master -> master
+		+
+
+		 3) Вивести лог змін (має бути 3 послідовних коміта)
+		+       $ git log --pretty=format:'%h : %s' --graph
+		+               * 41cc22f : Remove RSA K
+		+               * 3f8d96c : Fix typo
+		+               * 481a754 : Initial commit Lab_1
+		+
+
+		 4) На основі другого коміту зробити гілку, перейти в цю гілку та в ній внести зміни та зробити новий коміт
+		+
+		+
+
+		 5) Вивести дерево комітів у командному рядку. Він має бути приблизно наступний
+
 
 7) Створіть віддалений репозиторій на GitHub (BitBucket) та додати ободві локальні гілки на нього
+
+	$ git remote add origin https://github.com/UjinNikitin/MSVC_Lab_1.git
+
+
 
 8) У локальному репозиторії у гілці внесіть зміни та зробить коміт
 
