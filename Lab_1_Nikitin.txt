@@ -46,12 +46,54 @@
 			 * [new branch]      master -> master
 
 
-
 2) Зробити ще два коміти вносячи зміни у файли 
+	$ git add .
+
+	$ git commit -m "Fix typo"
+		[master 3f8d96c] Fix typo
+		 2 files changed, 44 insertions(+), 1 deletion(-)
+
+	$ git push origin master
+		git: 'credential-cache' is not a git command. See 'git --help'.
+		Enumerating objects: 7, done.
+		Counting objects: 100% (7/7), done.
+		Delta compression using up to 12 threads
+		Compressing objects: 100% (4/4), done.
+		Writing objects: 100% (4/4), 1.08 KiB | 1.08 MiB/s, done.
+		Total 4 (delta 2), reused 0 (delta 0)
+		remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+		To https://github.com/UjinNikitin/MSVC_Lab_1.git
+		   481a754..3f8d96c  master -> master
+
+	$ git add .
+
+	$ git commit -m "Remove RSA K"
+		[master 41cc22f] Remove RSA K
+		 1 file changed, 1 insertion(+), 5 deletions(-)
+
+	$ git push origin master
+		git: 'credential-cache' is not a git command. See 'git --help'.
+		Enumerating objects: 5, done.
+		Counting objects: 100% (5/5), done.
+		Delta compression using up to 12 threads
+		Compressing objects: 100% (3/3), done.
+		Writing objects: 100% (3/3), 326 bytes | 326.00 KiB/s, done.
+		Total 3 (delta 1), reused 0 (delta 0)
+		remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+		To https://github.com/UjinNikitin/MSVC_Lab_1.git
+		   3f8d96c..41cc22f  master -> master
+
 
 3) Вивести лог змін (має бути 3 послідовних коміта)
+	$ git log --pretty=format:'%h : %s' --graph
+		* 41cc22f : Remove RSA K
+		* 3f8d96c : Fix typo
+		* 481a754 : Initial commit Lab_1
+
 
 4) На основі другого коміту зробити гілку, перейти в цю гілку та в ній внести зміни та зробити новий коміт
+	
+
 
 5) Вивести дерево комітів у командному рядку. Він має бути приблизно наступний
 
