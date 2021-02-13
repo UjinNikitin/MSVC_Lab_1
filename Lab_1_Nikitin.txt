@@ -3,6 +3,49 @@
 ФБ-01мп
 
 1) Створювати Git-репозиторій і додати в нього декілька текстових файлів (чи з кодом), зробити початковий коміт
+	Створюю репозиторій:
+		$ git init
+		Initialized empty Git repository in D:/Dezmant991/Учебники/V курс/2 симестр/Проектування розподілених систем/Labs/Lab_1/.git/
+
+	Додаю файли:
+		- Lab_1_Nikitin.txt
+		- File with text.txt
+
+	Роблю початковий коміт:
+		$ git status
+			On branch master
+
+			No commits yet
+
+			Untracked files:
+			  (use "git add <file>..." to include in what will be committed)
+			        File with text.txt
+			        Lab_1_Nikitin.txt
+
+			nothing added to commit but untracked files present (use "git add" to track)
+
+		$ git add .
+
+		$ git commit -m "Initial commit Lab_1"
+			[master (root-commit) 481a754] Initial commit Lab_1
+			 2 files changed, 56 insertions(+)
+			 create mode 100644 File with text.txt
+			 create mode 100644 Lab_1_Nikitin.txt
+
+		$ git remote add origin https://github.com/UjinNikitin/MSVC_Lab_1.git
+
+		$ git push origin master
+			git: 'credential-cache' is not a git command. See 'git --help'.
+			Enumerating objects: 4, done.
+			Counting objects: 100% (4/4), done.
+			Delta compression using up to 12 threads
+			Compressing objects: 100% (4/4), done.
+			Writing objects: 100% (4/4), 2.27 KiB | 2.27 MiB/s, done.
+			Total 4 (delta 0), reused 0 (delta 0)
+			To https://github.com/UjinNikitin/MSVC_Lab_1.git
+			 * [new branch]      master -> master
+
+
 
 2) Зробити ще два коміти вносячи зміни у файли 
 

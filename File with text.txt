@@ -1,4 +1,4 @@
-There is a lot of text with realy important data
+There is a lot of text with really important data
 
 Maybe even some self generated RSA keys
 
